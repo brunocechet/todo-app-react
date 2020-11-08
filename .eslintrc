@@ -1,0 +1,21 @@
+{
+  "parser": "babel-eslint",
+  "plugins": ["react"],
+  "extends": ["react-app", "airbnb", "airbnb/hooks", "prettier", "prettier/react"],
+  "rules": {
+    "no-unused-expressions": ["error", { "allowShortCircuit": true }],
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }]
+  },
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true // Allows for the parsing of JSX
+    },
+    "ecmaVersion": 2018, // Allows for the parsing of modern ECMAScript features
+    "sourceType": "module" // Allows for the use of imports
+  },
+  "settings": {
+    "react": {
+      "version": "detect" // Tells eslint-plugin-react to automatically detect the version of React to use
+    }
+  }
+}
