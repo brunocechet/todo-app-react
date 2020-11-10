@@ -10,10 +10,10 @@ const DeleteModal = ({ onCancel, onConfirm, children }) => (
       <DialogContentText>{children}</DialogContentText>
     </DialogContent>
     <DialogActions>
-      <Button onClick={onCancel} color="primary">
+      <Button onClick={onCancel} color="primary" data-testid="cancel-button">
         Cancel
       </Button>
-      <Button onClick={onConfirm} color="primary">
+      <Button onClick={onConfirm} color="primary" data-testid="confirm-button">
         Confirm
       </Button>
     </DialogActions>

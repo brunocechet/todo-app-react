@@ -30,6 +30,9 @@ const UserModal = ({ onCancel, onSubmit, user }) => {
         <form onSubmit={handleSubmit} noValidate autoComplete="off">
           <TextField
             autoFocus
+            inputProps={{
+              'data-testid': 'name-input'
+            }}
             fullWidth
             error={!name}
             helperText="Name cannot be empty"
@@ -41,10 +44,10 @@ const UserModal = ({ onCancel, onSubmit, user }) => {
         </form>
       </DialogContent>
       <DialogActions>
-        <Button onClick={onCancel} color="primary">
+        <Button onClick={onCancel} color="primary" data-testid="cancel-button">
           Cancel
         </Button>
-        <Button onClick={handleSubmit} color="primary">
+        <Button onClick={handleSubmit} color="primary" data-testid="submit-button">
           Submit
         </Button>
       </DialogActions>

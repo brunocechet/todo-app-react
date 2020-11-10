@@ -8,7 +8,7 @@ import { Delete } from '@material-ui/icons';
 import BaseButton from '../BaseButton';
 
 const DeleteButton = ({ onClick }) => (
-  <BaseButton label="Delete" onClick={onClick}>
+  <BaseButton label="Delete" onClick={onClick} data-testid="delete-button">
     <Delete />
   </BaseButton>
 );

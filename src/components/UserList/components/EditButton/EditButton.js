@@ -8,7 +8,7 @@ import { Edit } from '@material-ui/icons';
 import BaseButton from '../BaseButton';
 
 const EditButton = ({ onClick }) => (
-  <BaseButton label="Edit" onClick={onClick}>
+  <BaseButton label="Edit" onClick={onClick} data-testid="edit-button">
     <Edit />
   </BaseButton>
 );
