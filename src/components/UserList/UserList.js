@@ -27,9 +27,22 @@ const StyledTableRow = withStyles(theme => ({
   }
 }))(TableRow);
 
-const UserList = ({ users }) => {
-  const handleEdit = () => {};
-  const handleDelete = () => {};
+const UserList = ({ usersById, setUserEditing, setUserDelete }) => {
+  const renderTableBody = () =>
+    Object.values(usersById)
+      .filter(({ deleted }) => !deleted)
+      .map(user => (
+        <StyledTableRow key={user.id}>
+          <StyledTableCell component="th" scope="row">
+            {user.name}
+          </StyledTableCell>
+          <StyledTableCell>{user.tasksQuantity}</StyledTableCell>
+          <StyledTableCell align="right">
+            <EditButton onClick={() => setUserEditing(user)} />
+            <DeleteButton onClick={() => setUserDelete(user)} />
+          </StyledTableCell>
+        </StyledTableRow>
+      ));
 
   return (
     <TableContainer component={Paper}>
@@ -41,27 +54,16 @@ const UserList = ({ users }) => {
             <StyledTableCell align="right" />
           </StyledTableRow>
         </TableHead>
-        <TableBody>
-          {users.map(user => (
-            <StyledTableRow key={user.id}>
-              <StyledTableCell component="th" scope="row">
-                {user.name}
-              </StyledTableCell>
-              <StyledTableCell>{user.tasksQuantity}</StyledTableCell>
-              <StyledTableCell align="right">
-                <EditButton onClick={handleEdit} />
-                <DeleteButton onClick={handleDelete} />
-              </StyledTableCell>
-            </StyledTableRow>
-          ))}
-        </TableBody>
+        <TableBody>{renderTableBody()}</TableBody>
       </Table>
     </TableContainer>
   );
 };
 
 UserList.propTypes = {
-  users: PropTypes.arrayOf(
+  setUserEditing: PropTypes.func.isRequired,
+  setUserDelete: PropTypes.func.isRequired,
+  usersById: PropTypes.objectOf(
     PropTypes.shape({
       id: PropTypes.string.isRequired,
       name: PropTypes.string.isRequired,
